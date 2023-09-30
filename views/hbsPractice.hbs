@@ -1,0 +1,13 @@
+<h1>{{firstName}} {{lastName}}</h1>
+
+{{#if isTrue}}
+  <p>Условие истинно</p>
+{{else}}
+  <p>Условие ложно</p>
+{{/if}}
+
+<ul>
+{{#each items}}
+    <li>Номер: {{this}}</li>
+{{/each}}
+</ul>

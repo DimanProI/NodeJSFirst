@@ -1,0 +1,23 @@
+- var username = "Дмитрий" 
+- var age = 20  
+- var isAdmin = true 
+
+if username != ""
+  p Приветствую вас, #{username}!
+else
+  p Добро пользователь, гость!
+
+each num in [1, 2, 3, 4, 5, 6]
+  p Номер: #{num}
+
+case age
+  when 20
+    p Тебе 20 лет.
+  when 18
+    p Тебе 18 лет.
+  default
+    p Сколько тебе лет не известно.
+
+
+- var userType = isAdmin ? "админ" : "обычный пользователь"
+p Твои права: #{userType}.

@@ -1,0 +1,14 @@
+extends ./head
+block content
+    if student != null
+        form(action="/student/" + student.id, method="POST")
+        input(name="firstname" value=student.firstname)
+        input(name="lastname" value=student.lastname)
+        input(name="surname" value=student.surname)
+        input(name="dateofbirth" value=student.dateofbirth)
+        input(name="telephone" value=student.telephone)
+        input(name="attending" type="checkbox" id="attending")
+        label(for="attending") Пришёл на занятие
+        input(type="submit" value='Отправить')
+    else
+        div Студент с таким id не найден    
