@@ -1,0 +1,7 @@
+extends ./head
+block content
+    if teacher != null
+        form(action="/teacher/" + teacher.id, method="POST")
+        input(name="name" value=teacher.name)
+    else
+        div Преподаватель с таким id не найден    

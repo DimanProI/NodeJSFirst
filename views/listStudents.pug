@@ -1,6 +1,0 @@
-extends ./head
-block content
-    each el in students
-        li 
-            a(href="/student/" + el.id) #{el.firstname} #{el.lastname} #{el.surname} #{el.dateofbirth} #{el.telephone}
-    include ./information        

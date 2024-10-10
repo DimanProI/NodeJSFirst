@@ -1,0 +1,6 @@
+extends ./head
+block content
+    each el in teacher
+        li 
+            a(href="/teacher/" + el.id) #{el.name}
+    include ./information 

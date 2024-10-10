@@ -1,0 +1,8 @@
+extends ./head
+block content
+    if student != null
+        form(action="/student/" + student.id, method="POST")
+        input(name="name" value=student.name)
+        input(type="submit" value='Отправить')
+    else
+        div Студент с таким id не найден    
