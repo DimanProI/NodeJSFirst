@@ -1,7 +1,7 @@
-extends ./head
+extends ../head
 block content
-    if teacher != null
-        form(action="/teacher/" + teacher.id, method="POST")
-        input(name="name" value=teacher.name)
-    else
-        div Преподаватель с таким id не найден    
+    form(action="/updateTeacher/" + teacher.id, method="POST")
+        input(name="name" type="text" placeholder="ФИО преподавателя" value=teacher.name required)
+        input(type="submit" value="Обновить")
+    form(action="/deleteTeacher/" + teacher.id, method="POST")
+        input(type="submit" value="Удалить")

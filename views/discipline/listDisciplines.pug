@@ -1,0 +1,6 @@
+extends ../head
+block content
+    a(href="/addDiscipline") Добавить учебную дисциплину
+    each el in discipline
+        li
+            a(href="/discipline/" + el.id) #{el.name}

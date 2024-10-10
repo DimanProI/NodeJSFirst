@@ -1,0 +1,7 @@
+extends ../head
+block content
+    form(action="/updateStudentGroup/" + studentGroup.id, method="POST")
+        input(name="name" type="text" placeholder="Наименование группы" value=studentGroup.name required)
+        input(type="submit" value="Обновить")
+    form(action="/deleteStudentGroup/" + studentGroup.id, method="POST")
+        input(type="submit" value="Удалить")

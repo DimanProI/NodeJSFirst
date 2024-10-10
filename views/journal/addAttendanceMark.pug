@@ -1,0 +1,34 @@
+extends ../head
+block content
+    div
+        h2 Группа #{studentGroup.name}
+    form(action="/addAttendanceMark/studentGroupId=" + studentGroup.id, method="POST")
+        input(name="date_pair" id="date_pair" type="date" placeholder="Дата занятий" required)
+        table(border="1")
+            thead
+                tr
+                    td(rowspan="2" colspan="2")
+                    each el in disciplineTeacher
+                        th #{el.discipline_name}
+                            input(name="schedule_id" type="hidden" value=el.schedule_id)
+                tr
+                    each el in disciplineTeacher
+                        th #{el.teacher_name}
+                tr
+                    th №
+                    th Список студентов
+                    th(colspan=disciplineTeacher.length) Посещаемость
+            tbody
+                - var i = 0;
+                each el in students
+                    tr
+                        td #{i+1}
+                        td #{el.name}
+                            // следующее поле не будет отображаться в пользовательском интерфейсе, поскольку установили свойство type в значение "hidden"
+                            // это поле требуется для отправки данных на сторону сервера (в данном случае данными выступают идентификаторы студентов)
+                            input(name="array_students_id" type="hidden" value=el.id)
+                        - for(var j=0; j<disciplineTeacher.length; j++)
+                            td
+                                input(name="attendance" + i + "" + j type="checkbox")
+                    - i++
+        input(type="submit" value="Добавить")

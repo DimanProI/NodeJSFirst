@@ -1,0 +1,7 @@
+extends ../head
+block content
+    form(action="/updateDiscipline/" + discipline.id, method="POST")
+        input(name="name" type="text" placeholder="Название учебной дисциплины" value=discipline.name required)
+        input(type="submit" value="Обновить")
+    form(action="/deleteDiscipline/" + discipline.id, method="POST")
+        input(type="submit" value="Удалить")

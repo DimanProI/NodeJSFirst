@@ -1,6 +1,6 @@
-extends ./head
+extends ../head
 block content
+    a(href="/addStudent") Добавить студента
     each el in students
-        li 
-            a(href="/student/" + el.id) #{el.name}
-    include ./information        
+        li
+            a(href="/student/" + el.id) #{el.name}, группа: #{el.student_group_name}

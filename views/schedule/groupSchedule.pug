@@ -1,0 +1,25 @@
+extends ../head
+block content
+    - var weekdays = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+    h2 Группа #{student_group.name}
+    a(href="/addRecordSchedule/" + student_group.id) Добавить новую запись
+    table(border="1")
+        thead
+            tr
+                th №
+                th День недели
+                th Номер пары
+                th Учебная дисциплина и преподаватель
+                th Действие
+        tbody
+            - var i = 1;
+            each el in schedule
+                tr
+                    td #{i}
+                    td #{weekdays[el.week_day]}
+                    td #{el.pair_number}
+                    td #{el.discipline_name} &mdash; #{el.teacher_name}
+                    td
+                        form(action="/deleteSchedule/scheduleId=" + el.id + "/studentGroupId=" + student_group.id, method="POST")
+                            input(type="submit" value="Удалить")
+                - i++

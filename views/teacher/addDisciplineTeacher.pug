@@ -1,0 +1,10 @@
+extends ../head
+block content
+    form(action="/addDisciplineTeacher" method="POST")
+        select(name="discipline_id")
+            each el in disciplines
+                option(value=el.id) #{el.name}
+        select(name="teacher_id")
+            each el in teachers
+                option(value=el.id) #{el.name}
+        input(type="submit" value="Добавить")

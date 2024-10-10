@@ -1,0 +1,8 @@
+extends ../head
+block content
+    form(action="/addStudent" method="POST")
+        input(name="name" type="text" placeholder="ФИО студента" required)
+        select(name="student_group_id")
+            each el in studentGroups
+                option(value=el.id) #{el.name}
+        input(type="submit" value="Добавить")

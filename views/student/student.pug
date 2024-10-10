@@ -1,8 +1,14 @@
-extends ./head
+extends ../head
 block content
-    if student != null
-        form(action="/student/" + student.id, method="POST")
-        input(name="name" value=student.name)
-        input(type="submit" value='Отправить')
-    else
-        div Студент с таким id не найден    
+    form(action="/updateStudent/" + student.id, method="POST")
+        input(name="name" type="text" placeholder="ФИО студента" value=student.name required)
+        select(name="student_group_id")
+            each el in studentGroups
+                if(student.student_group_id == el.id)
+                    // подставляем по умолчанию значение той группы, к которой уже прикреплён студент
+                    option(value=el.id selected) #{el.name}
+                else
+                    option(value=el.id) #{el.name}
+        input(type="submit" value="Обновить")
+    form(action="/deleteStudent/" + student.id, method="POST")
+        input(type="submit" value="Удалить")

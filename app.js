@@ -1,35 +1,29 @@
 // Подключение модуля express
 var express = require("express");
 
+var bodyParser = require('body-parser');
+
 // Создание объекта  express
 var app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 var student = require('./routes/student');
 var teacher = require('./routes/teacher');
+var studentGroup = require('./routes/studentGroup');
+var discipline = require('./routes/discipline');
+var schedule = require('./routes/schedule');
+var journal = require('./routes/journal');
 
+app.use('/', journal);
+app.use('/', schedule);
+app.use('/', discipline);
+app.use('/', studentGroup);
 app.use('/', teacher);
 app.use('/', student);
 
-
-// Подключение шаблонизаторов Ejs и Handlebars.
-app.set("view engine", "ejs");
-app.set("view engine", "hbs");
-
-// Определение обработчика для маршрута "/ejsPractice"
-app.get("/ejsPractice", function(request, response)  {   
-  response.render("ejsPractice.ejs"); 
-});
-
-// Определение обработчика для маршрута "/hbsPractice"
-app.get("/hbsPractice", function(request, response)  {   
-  response.render("hbsPractice.hbs", {
-    firstName: "John",
-    lastName: "Doe",
-    isTrue: true,
-    animal: "cat",
-    items: [1, 2, 3, 4, 5, 6]
-  }); 
-});
 
 // Указание, что каталог public используется для хранения статических файлов
 app.use(express.static("public"));
@@ -62,8 +56,6 @@ app.get("/information", function(request, response)  {
     response.render("test", {description: "На этой странице будет описание проекта"});
   });
 
-var bodyParser = require('body-parser');
-
 
 // Определение обработчика для маршрута "/pugPractice"
 app.get("/pugPractice", function(request, response)  {   
@@ -71,7 +63,3 @@ app.get("/pugPractice", function(request, response)  {
       title: "Работа с шаблонизатором Pug"
   }); 
 });
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));

@@ -1,0 +1,6 @@
+extends ../head
+block content
+    each el in studentGroups
+        li
+            // ссылка на страницу расписания группы
+            a(href="/groupSchedule/" + el.id) #{el.name}

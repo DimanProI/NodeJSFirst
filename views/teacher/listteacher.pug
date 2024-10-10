@@ -1,6 +1,6 @@
-extends ./head
+extends ../head
 block content
+    a(href="/addTeacher") Добавить преподавателя
     each el in teacher
-        li 
+        li
             a(href="/teacher/" + el.id) #{el.name}
-    include ./information 

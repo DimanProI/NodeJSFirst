@@ -3,5 +3,17 @@ html
         meta(charset='utf-8')
         title #{title}
     body
+        h2 Навигация по страницам
+        nav
+            a(href="/listStudentGroups") Студенческие группы |
+            a(href="/listStudents") Студенты |
+            a(href="/listteacher") Преподаватели |
+            a(href="/listDisciplines") Учебные дисциплины |
+            a(href="/listDisciplineTeacher") Учебные дисциплины преподавателей|
+            a(href="/schedule") Расписание занятий |
+            a(href="/attendanceJournal") Журнал посещаемости
+        br
+    block content
 
-    block content    
+    block scripts
+            script(src="/js/jquery-3.7.1.min.js")
